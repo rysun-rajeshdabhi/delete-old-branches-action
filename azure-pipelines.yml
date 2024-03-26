@@ -10,7 +10,7 @@ steps:
   inputs:
     script: |     
       set -eo pipefail
-      ${INPUT_REPO_TOKEN}=$(PTOKEN)
+      INPUT_REPO_TOKEN=$(PTOKEN)
       REPO="kcsplcompusoft/ABCAPI"
       DATE='1 hour ago'
       DRY_RUN=true
