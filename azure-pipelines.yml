@@ -20,12 +20,12 @@ steps:
       DELETE_TAGS=true
       MINIMUM_TAGS=5
       DEFAULT_BRANCHES=${INPUT_DEFAULT_BRANCHES:-main,master}
-      EXCLUDE_BRANCH_REGEX= ^(foo|bar)$
+      EXCLUDE_BRANCH_REGEX= "^(foo|bar)$"
       EXCLUDE_TAG_REGEX='^v.*'
       EXCLUDE_OPEN_PR_BRANCHES=true
       
       # used for GitHub CLI authentication
-      export GITHUB_TOKEN=$(PTOKEN)
+      export GITHUB_TOKEN= $(PTOKEN)
       
       echo "was_dry_run=${DRY_RUN}" >> "$GITHUB_OUTPUT"
       
