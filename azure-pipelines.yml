@@ -13,8 +13,7 @@ steps:
       
       set -eo pipefail
       
-      [[ -n ${INPUT_REPO_TOKEN} ]] || { echo "Please set the REPO_TOKEN input"; exit 1; }
-      [[ -n ${INPUT_DATE} ]] || { echo "Please specify a suitable date input for branch filtering"; exit 1; }
+      
       
       REPO="kcsplcompusoft/ABCAPI"
       DATE='3 months ago'
