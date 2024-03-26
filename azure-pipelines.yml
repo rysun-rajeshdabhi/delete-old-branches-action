@@ -8,31 +8,25 @@ variables:
 steps:
 - task: CmdLine@2
   inputs:
-    script: |
-     
+    script: |     
       set -eo pipefail
-      
-      
-      
       REPO="kcsplcompusoft/ABCAPI"
       DATE='3 months ago'
       DRY_RUN=true
       DELETE_TAGS=true
       MINIMUM_TAGS=5
       DEFAULT_BRANCHES=${INPUT_DEFAULT_BRANCHES:-main,master}
-      EXCLUDE_BRANCH_REGEX='^(foo|bar)$'
+      EXCLUDE_BRANCH_REGEX=^(foo|bar)$
       EXCLUDE_TAG_REGEX='^v.*'
       EXCLUDE_OPEN_PR_BRANCHES=true
-      
       # used for GitHub CLI authentication
       export GITHUB_TOKEN= $(PTOKEN)
-      
       echo "was_dry_run=${DRY_RUN}" >> "$GITHUB_OUTPUT"
       
       deleted_branches=()
       
       default_branch_protected() {
-      #    local br=${1}
+          local br=${1}
       
           local default_branches
           default_branches=$(echo "${DEFAULT_BRANCHES}" | tr "," "\n")
