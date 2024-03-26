@@ -22,7 +22,9 @@ steps:
       EXCLUDE_OPEN_PR_BRANCHES=true
       # used for GitHub CLI authentication
       export GITHUB_TOKEN= ${INPUT_REPO_TOKEN}
-      echo "was_dry_run=${DRY_RUN}" >> '$GITHUB_OUTPUT' 
+      echo "was_dry_run=${DRY_RUN}" >> '$GITHUB_OUTPUT'
+      echo "$GITHUB_OUTPUT"
+      echo "${REPO}"
       deleted_branches=()
       default_branch_protected() {
           local br=${1}
