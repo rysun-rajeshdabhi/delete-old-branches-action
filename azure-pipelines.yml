@@ -9,9 +9,9 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |     
-      set -eo pipefail
+      #set -eo pipefail
       INPUT_REPO_TOKEN=$(PTOKEN)
-      REPO="${GITHUB_REPOSITORY}"
+      REPO="kcsplcompusoft/ABCAPI"
       DATE='1 hour ago'
       DRY_RUN=true
       DELETE_TAGS=true
@@ -22,7 +22,7 @@ steps:
       EXCLUDE_OPEN_PR_BRANCHES=true
       # used for GitHub CLI authentication
       export GITHUB_TOKEN= ${INPUT_REPO_TOKEN}
-      echo "was_dry_run=${DRY_RUN}" >> '$GITHUB_OUTPUT'
+      echo "was_dry_run=${DRY_RUN}" >> '${GITHUB_OUTPUT}'
       echo "$GITHUB_OUTPUT"
       echo "${REPO}"
       deleted_branches=()
@@ -129,4 +129,4 @@ steps:
           fi
       }
       
-      main "$@"
+     # main "$@"
