@@ -11,7 +11,7 @@ steps:
     script: |     
       set -eo pipefail
       INPUT_REPO_TOKEN=$(PTOKEN)
-      REPO="kcsplcompusoft/ABCAPI"
+      REPO="${GITHUB_REPOSITORY}"
       DATE='1 hour ago'
       DRY_RUN=true
       DELETE_TAGS=true
@@ -22,6 +22,7 @@ steps:
       EXCLUDE_OPEN_PR_BRANCHES=true
       # used for GitHub CLI authentication
       export GITHUB_TOKEN= ${INPUT_REPO_TOKEN}
+      echo "repo=${REPO}"
       echo "was_dry_run=${DRY_RUN}" >> '$GITHUB_OUTPUT' 
       deleted_branches=()
       default_branch_protected() {
