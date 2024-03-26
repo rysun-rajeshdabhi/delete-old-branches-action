@@ -9,8 +9,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      #!/bin/bash
-      
+     
       set -eo pipefail
       
       
