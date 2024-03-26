@@ -11,7 +11,7 @@ steps:
     script: |     
       set -eo pipefail
       REPO="kcsplcompusoft/ABCAPI"
-      DATE='3 months ago'
+      DATE='1 hour ago'
       DRY_RUN=true
       DELETE_TAGS=true
       MINIMUM_TAGS=5
