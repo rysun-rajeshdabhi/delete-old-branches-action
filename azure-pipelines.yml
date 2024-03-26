@@ -32,7 +32,7 @@ steps:
       deleted_branches=()
       
       default_branch_protected() {
-          local br=${1}
+      #    local br=${1}
       
           local default_branches
           default_branches=$(echo "${DEFAULT_BRANCHES}" | tr "," "\n")
