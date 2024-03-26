@@ -23,7 +23,6 @@ steps:
       # used for GitHub CLI authentication
       export GITHUB_TOKEN= ${INPUT_REPO_TOKEN}
       echo "was_dry_run=${DRY_RUN}" >> '${GITHUB_OUTPUT}'
-      echo "$GITHUB_OUTPUT"
       echo "${REPO}"
       deleted_branches=()
       default_branch_protected() {
