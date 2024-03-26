@@ -22,29 +22,21 @@ steps:
       # used for GitHub CLI authentication
       export GITHUB_TOKEN= $(PTOKEN)
       echo "was_dry_run=${DRY_RUN}" 
-      
       deleted_branches=()
-      
       default_branch_protected() {
           local br=${1}
-      
           local default_branches
           default_branches=$(echo "${DEFAULT_BRANCHES}" | tr "," "\n")
-      
           for default_branch in $default_branches; do
               if [[ "${br}" == "${default_branch}" ]]; then
                   return 0
               fi
           done
-      
           return 1
       }
-      
       branch_protected() {
           local br=${1}
-      
           protected=$(gh api "repos/${REPO}/branches/${br}" --jq '.protected')
-      
           # If we got null then something else happened (like no access error etc) so
           # we can't determine the status for the branch
           case ${protected} in
@@ -53,16 +45,13 @@ steps:
               *) return 1 ;;
           esac
       }
-      
       extra_branch_or_tag_protected() {
           local br=${1} ref="${2}"
-      
           if [[ "${ref}" == "branch" ]]; then
               echo "${br}" | grep -qE "${EXCLUDE_BRANCH_REGEX}"
           elif [[ "${ref}" == "tag" ]]; then
               echo "${br}" | grep -qE "${EXCLUDE_TAG_REGEX}"
           fi
-      
           return $?
       }
       
@@ -119,7 +108,7 @@ steps:
                   delete_branch_or_tag "${br}" "heads" "${sha}"
               fi
           done
-          echo "deleted_branches=${deleted_branches[*]}" >> "$GITHUB_OUTPUT"
+          echo "deleted_branches=${deleted_branches[*]}"
           if [[ "${DELETE_TAGS}" == true ]]; then
               local tag_counter=1
               for br in $(git ls-remote -q --tags --refs | sed "s@^.*tags/@@" | sort -rn); do
