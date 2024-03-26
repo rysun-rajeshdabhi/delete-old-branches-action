@@ -11,7 +11,7 @@ steps:
     script: |     
       set -eo pipefail
       INPUT_REPO_TOKEN=$(PTOKEN)
-      #REPO="${GITHUB_REPOSITORY}"
+      REPO="${GITHUB_REPOSITORY}"
       DATE='1 hour ago'
       DRY_RUN=true
       DELETE_TAGS=true
